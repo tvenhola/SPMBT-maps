@@ -7,6 +7,13 @@ Perl (5.?)
 Perlmagick (imagemagick utility)
 SRTM3 map data files from the region of your choice from http://dds.cr.usgs.gov/srtm/version2_1/SRTM3/
 
+Installation:
+Install the linux utlities perl and perlmagick:
+
+Ubuntu and Debian:
+sudo apt-get install perl perlmagick
+
+
 Usage:
 perl map.pl --la N60.215486 --lo E24.768715 --water=1 --min 5
 
