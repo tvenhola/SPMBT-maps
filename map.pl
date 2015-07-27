@@ -160,7 +160,7 @@ my @data = ();
 
 Getopt::Mixed::init( 'la=s lo=s min:i w:i water>w');
 
-my ($la, $lo, $force_min, $water);
+my ($la, $lo, $force_min, $water) = (0, 0, 5, 0);
 my $hgtfile = "";
 my ($lax, $lox);
 
@@ -210,7 +210,7 @@ while (($option, $value) = nextOption()) {
     }
   }
   if ($option eq 'min') {
-    $force_min = $value;
+    $force_min = int($value);
   }
   if ($option eq 'w') {
     $water = $value;
@@ -304,16 +304,15 @@ for (my $y=0; $y < $SRC_Y; $y++) {
       }
     }
     my $int16 = unpack 'n', $readin;
-    $int16 = 65536-$int16 if ($int16 > 64000);
-#    print "fuu? ($x, $y) -> $int16  || ($SRC_X, $SRC_Y)\n" if ($int16 < 1 || $int16 > 100);
-    $int16 = DATA_MISSING if ($int16 > 9000);
+    $int16 = $int16-65536 if ($int16 > 32767);
+#    print "fuu? ($x, $y) -> $int16  || ($SRC_X, $SRC_Y)\n" if ($int16 < -20 || $int16 > 100);
+    $int16 = DATA_MISSING if ($int16 < -32000);
     $data[$x][$y] = $int16;
     $min = ($int16 < $min && $int16 != DATA_MISSING) ? $int16 : $min;
     $max = $int16 > $max ? $int16 : $max;
   }
 }
 print "Height info read: min $min, max $max\n";
-
 my @data_new = map { [@$_] } @data; # good enough copy for us
 my $updated = 1;
 my $upddirmin = 4; 
