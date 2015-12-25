@@ -26,6 +26,10 @@ There will also be a small scale image xx.gif which contains the raw data (unsca
 
 Load the map nr. 999 into Map Editor, set fill range to 255 and clear terrain leaving the height information intact using the fill. This will redraw the hexes properly. Enjoy!
 
+In case you get an error "410: No images defined" you need to install GhostScript as well. Run
+
+sudo apt-get install gs
+
 ISSUES AND BUGS:
 * Water not yet implemented
 * Will work best on non-coastal areas (water)
