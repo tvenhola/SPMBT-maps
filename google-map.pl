@@ -339,7 +339,8 @@ sub fetch {
 Getopt::Mixed::init( 'coords=s min:i w:i water>w');
 
 my @coords;
-my ($fmin, $water) = (5, 0);
+my $fmin;
+my $water = 0;
 while (my ($option, $value) = nextOption()) {
     print "$option => $value\n";
     if ($option eq 'coords') {
@@ -373,17 +374,20 @@ $/ =
 read(MAP, my $buffer, 70726, 0);
 print MAPOUT $buffer;
 
+my $compression = ($max - $min) > 160 ? ($max-$min)/150 : 1;
+print "Height differences too high, compressing by factor $compression\n" if ($compression > 1 && !defined $fmin);
+
 for (my $x = 1; $x < 159; $x++) {
     for (my $y = 1; $y < 199; $y++) {
 	my $h = $data[$x][$y];
-#	print "Read ($x, $y) ==> $h\n";
-#        print "($x, $y) = $h\n" if ($x == 1 || $y == 1 || $x == 158 || $y == 198);
         my $c = $h; # * ($max-$min);
 	if (defined $fmin) {
 	    $c -= $fmin;
+            $compression = 1;
 	} else {
 	    $c -= $min if ($min > 0);
 	}
+        $c = $c / $compression;
         if ($c < 0) {
 	    $c = 0;
         }

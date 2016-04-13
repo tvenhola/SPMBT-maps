@@ -13,7 +13,7 @@ Install the linux utlities perl and perlmagick:
 
 Ubuntu and Debian:
 
-sudo apt-get install perl perlmagick libgetopt-mixed-perl
+sudo apt-get install perl perlmagick libgetopt-mixed-perl libjson-perl libwww-curl-perl
 
 
 Usage:
