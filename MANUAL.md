@@ -16,7 +16,8 @@ The map location and rotation may be easily adjusted later in the UI tool. Coord
 so S20.1 W8.05 is entered by typing in -20.1 and -8.05 respectively. Rotation is in degrees.
 
 In the tool you can then do adjustments (some of them are hidden when they would have no effect)
-* Rotate map: Shift + Alt + drag
+* Move map: Drag (with mouse) by holding the left button
+* Rotate map: Shift + Alt + drag (holding left button of your mouse)
 * Zoom in: Double click / &#8862; button / mouse wheel scroll up
 * Zoom out: &#8863; button / mouse wheel scroll down
 * Redraw hex grid to current map center on screen according to map rotation: &#10011; button
