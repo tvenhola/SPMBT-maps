@@ -132,7 +132,7 @@
         alert('Invalid values, using defaults!');
     }<?php
 	} else {
-		header("Location: http://www.venhola.com/maps/geo.php#$lo,$lat,$rot");
+		header("Location: https://www.venhola.com/maps/geo.php#$lo,$lat,$rot");
 	}?>
     var lonLat = [parseFloat(hash[0]),parseFloat(hash[1])];
     var compression = Math.cos(lonLat[1]*Math.PI/180)
